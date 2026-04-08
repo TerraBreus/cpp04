@@ -6,45 +6,11 @@
 #include <string>
 #include <unistd.h>
 #include "terminal_colors.h"
+#include "utils.hpp"
 
-void	sleepyPrinter(std::string prompt, std::string color)
+std::string	startUpMessage(void)
 {
-	std::cout << color;
-	std::cout << prompt << std::endl;
-	std::cout << RESET;
-	sleep(1);
-}
-
-// Function overloading!!! If I call the function with less arguments,
-// the compiler automatically knows which function to use. (C++ only!)
-void	sleepyPrinter(std::string prompt)
-{
-	std::cout << prompt << std::endl;
-	sleep(1);
-}
-
-std::string askForInput(void)
-{
-	std::string	userInput;
-
-	while (true)
-	{
-		std::getline(std::cin, userInput);
-		if (std::cin.eof())
-		{
-			std::cout << "Exiting program..." << std::endl;
-			exit (0);
-		}
-		if (userInput.empty())
-			continue ;
-		else
-			break;
-	}
-	return (userInput);
-}
-
-std::string	startMessage(void)
-{
+	//SHOULD I HAVE SOME KIND OF LEGEND TO SEPERATE DIFFERENT TYPES OF MESSAGES?
 	std::cout << PURPLE;
 	std::cout << "Welcome to my interactive program teaching you about Polymorphism." << std::endl;
 	std::cout << "What would you like to see first?\n\n" << std::endl;
@@ -54,68 +20,64 @@ std::string	startMessage(void)
 	std::cout << "2. Incorrect use of Polymorphism (WrongAnimal class)." << std::endl;
 	std::cout << RESET;
 
-	std::string	result = askForInput();
+	std::string	result = askForInput(STR);
 	return (result);
 }
 
-void	clearTerminal(void)
+void	correctPolymorphismMessageOne(void)
 {
-	//Escape sequence for clearing terminal
-	//and moving cursor to top left.
-	std::cout << "\033[2J\033[H";
-}
+	loadingScreen("correctPolymorphism.exe");
+	sleepyPrinter("=== AN INTRODUCTION TO POLYMORPHISM ===", YELLOW);
+	sleepyPrinter("Hi my friend,\n");
+	sleepyPrinter("Polymorphism is a way of having the same mechanism, trigger different behavior");
+	sleepyPrinter("Take the following example of a handshake");
+	printer("(press any key to continue)", NEWLINE);
+	askForInput(CIN);
+	loadingScreen("handshakeExample");
+	sleepyPrinter("When you give your friend a handshake, assuming you are under the age of 35,");
+	printer("you will most likely give them a hug or a box.", NEWLINE);
+	sleepyPrinter("But when you meet someone for the very first time, you're more likely to give");
+	printer("them a normal handshake. (The one that spreads diseases and stuff)", NEWLINE);
+	printer("You see, they are the same mechanism, but different in execution.", NO_NEWLINE);
+	printer("Both are types of greetings, yet they are not the same", NEWLINE);
+	printer("Understand so far? (press any key to continue)", YELLOW, NEWLINE);
+	askForInput(CIN);
+	sleepyPrinter("Right! Let's go back to the exercise then!!!", GREEN);
+	loadingScreen("catsAndDogs.meow");
+	sleepyPrinter("In this example, we have dogs and cats, which are both animals.");
+	sleepyPrinter("Cats and Dogs both can make sounds! However they are not the same...");
+	sleepyPrinter("First, let's see what happens when we force a 'generic' animal to make a sound", RED);
+	sleepyPrinter("const Animal* \t genericAnimal = new Animal();", PURPLE);
+	// I NEED TO FIND A WAY TO SEPARATE MY TUTOR TEXT FROM DECONSTRUCTOR TEXTS
+	const Animal *	genericAnimal = new Animal();
 
-void	loadingScreen(std::string prompt)
-{
-	clearTerminal();
-	for (int j = 0; j < 3; j++)
-	{
-		std::cout << BRIGHT_RED;
-		std::cout << "INITIALIZING " << prompt << std::endl;
-		std::cout << RESET;
-		std::cout << "\rLoading";
-		for (int i = 0; i < 4; i++)
-		{
-			std::cout << ".";
-			std::cout << std::flush;
-			usleep(500000);
-		}
-		clearTerminal();
-	}
-}
-
-#define NEWLINE 1
-#define NO_NEWLINE 0
-
-void	printer(std::string prompt, std::string color, int newline)
-{
-	std::cout << color;
-	std::cout << prompt;
-	if (newline == NEWLINE)
-		std::cout << std::endl;
-	else
-		std::cout << std::flush;
-	std::cout << RESET;
-}
-
-void	printer(std::string prompt, int newline)
-{
-	std::cout << prompt;
-	if (newline == NEWLINE)
-		std::cout << std::endl;
-	else
-		std::cout << std::flush;
+	printer("press any key to continue...", YELLOW, NEWLINE);
+	askForInput(CIN);
+	sleepyPrinter("genericAnimal->makeSound();");
+	genericAnimal->makeSound();
+	sleepyPrinter("const Animal* \t jake = new Dog();", PURPLE);
+	printer("Jake is of type ", NO_NEWLINE);
+	printer("dog", BOLD_RED, NO_NEWLINE);
+	printer(", which is also a type of ", NO_NEWLINE);
+	printer("animal", BOLD_PURPLE, NEWLINE);
+	printer("Do you understand so far? (y/n)", NEWLINE);
 }
 
 void	correctPolymorphism(void)
 {
-	loadingScreen("correctPolymorphism.exe");
-	sleepyPrinter("=== AN INTRODUCTION TO POLYMORPHISM ===", YELLOW);
-	sleepyPrinter("Hi my friend,\nAllow me to introduce you to Jake");
-	sleepyPrinter("const Animal* \t jake = new Dog();", PURPLE);
-	printer("Jake is of type ", NO_NEWLINE);
-	printer("dog", BOLD_RED, NO_NEWLINE);
+	correctPolymorphismMessageOne();
+	std::string	input = askForInput(STR);
+	if (!(input == "y" || input == "Y"))
+		idiotBehavior();
+	sleepyPrinter("Alright, let's declare our dog!");
 	const Animal*	j = new Dog();
+	printer("Please type \"woof\" to continue", NEWLINE);
+	input = askForInput(STR);
+	if (input != "dog")
+	{
+		delete j;
+		idiotBehavior();
+	}
 	const Animal*	meta = new Animal();
 	const Animal*	i = new Cat();
 
@@ -138,17 +100,12 @@ void	incorrectPolymorphism(void)
 	delete	wrong;
 }
 
-void	idiotBehavior(void)
-{
-	sleepyPrinter("Oh well...", RED);
-	sleepyPrinter("Guess we can start the program again", RED);
-}
-
 int	main(void)
 {
 	std::string	userInput;
 
-	userInput = startMessage();
+	clearTerminal();
+	userInput = startUpMessage();
 	if (userInput == "1")
 		correctPolymorphism();
 	else if (userInput == "2")
