@@ -3,6 +3,7 @@ COMP = c++
 FLAGS = -Wall -Werror -Wextra
 
 SRC := \
+	   utils.cpp \
 	   main.cpp \
 	   Animal.cpp \
 	   Dog.cpp \
