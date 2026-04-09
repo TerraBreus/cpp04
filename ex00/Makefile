@@ -1,6 +1,6 @@
 NAME = someWeirdProgramForAnimalSounds
 COMP = c++
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -Iinc
 
 SRC := \
 	   utils.cpp \
@@ -11,18 +11,25 @@ SRC := \
 	   WrongCat.cpp \
 	   WrongAnimal.cpp
 
-OBJ := $(SRC:%.cpp=%.o)
+SRCDIR := src/
+OBJDIR := obj/
+
+OBJ := $(addprefix $(OBJDIR), $(SRC:%.cpp=%.o))
 
 all : $(NAME)
 
 $(NAME) : $(OBJ)
 	$(COMP) $(FLAGS) $(OBJ) -o $@
 
-%.o : %.cpp
+makedir :
+	mkdir -p $(OBJDIR)
+
+$(OBJDIR)%.o : $(SRCDIR)%.cpp makedir
 	$(COMP) $(FLAGS) -c $< -o $@
 
 clean :
 	rm -rf $(OBJ)
+	rmdir $(OBJDIR)
 
 fclean : clean
 	rm -rf $(NAME)
