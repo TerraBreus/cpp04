@@ -1,6 +1,6 @@
 NAME = someWeirdProgramForAnimalSounds
 COMP = c++
-FLAGS = -Wall -Werror -Wextra -Iinc
+FLAGS = -Wall -Werror -Wextra
 
 SRC := \
 	   utils.cpp \

@@ -1,5 +1,5 @@
 #include <string>
-#include "utils.hpp"
+#include "../inc/utils.hpp"
 
 void	sleepyPrinter(std::string prompt, std::string color)
 {

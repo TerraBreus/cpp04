@@ -40,3 +40,6 @@
 #define BRIGHT_PURPLE	"\033[95m"
 #define BRIGHT_CYAN		"\033[96m"
 #define BRIGHT_WHITE	"\033[97m"
+
+//Background Colors
+#define BG_BLACK		"\033[40m"

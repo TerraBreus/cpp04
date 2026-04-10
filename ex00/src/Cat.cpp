@@ -1,4 +1,4 @@
-#include "Cat.hpp"
+#include "../inc/Cat.hpp"
 #include <iostream>
 
 Cat::Cat(void)

@@ -1,10 +1,13 @@
-#include "Dog.hpp"
+#include "../inc/Dog.hpp"
+#include "../inc/terminal_colors.h"
 #include <iostream>
 
 Dog::Dog(void)
 {
 	this->type = "Dog";
+	std::cout << BG_BLACK;
 	std::cout << "Created a dog." << std::endl;
+	std::cout << RESET;
 }
 
 Dog::Dog(const Dog& other)
