@@ -13,4 +13,6 @@ class Dog : public Animal
 		~Dog (void) override;
 
 		void	makeSound(void) const override;
+		void	createThought(std::string, int i);
+		void	thinkThought(int i);
 };
