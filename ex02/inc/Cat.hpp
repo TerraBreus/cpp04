@@ -2,8 +2,6 @@
 #include "Animal.hpp"
 #include "Brain.hpp"
 
-//But I first add something here
-
 class Cat : public Animal
 {
 	private:
@@ -20,5 +18,3 @@ class Cat : public Animal
 		void	thinkThought(int i);
 		void	printBrainAdress();
 };
-
-//Let's say I add something here
