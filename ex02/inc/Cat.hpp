@@ -20,3 +20,5 @@ class Cat : public Animal
 		void	thinkThought(int i);
 		void	printBrainAdress();
 };
+
+//Let's say I add something here
