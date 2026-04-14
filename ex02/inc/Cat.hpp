@@ -2,6 +2,8 @@
 #include "Animal.hpp"
 #include "Brain.hpp"
 
+//But I first add something here
+
 class Cat : public Animal
 {
 	private:
