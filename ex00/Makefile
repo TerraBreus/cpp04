@@ -3,6 +3,7 @@ COMP = c++
 FLAGS = -Wall -Werror -Wextra
 
 SRC := \
+	   startUpMessage.cpp \
 	   correctPolymorphism.cpp \
 	   utils.cpp \
 	   main.cpp \
