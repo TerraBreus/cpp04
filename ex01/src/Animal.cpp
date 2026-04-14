@@ -4,7 +4,7 @@
 
 Animal::Animal(void) 
 {
-	std::cout << BG_BLACK << GREEN;
+	std::cout << GREEN;
 	this->type = "no type set";
 	std::cout << "An Animal class has been created." << std::endl;
 	std::cout << RESET;
@@ -26,16 +26,14 @@ Animal& Animal::operator=(const Animal& other)
 
 Animal::~Animal(void) 
 {
-	std::cout << BG_BLACK << RED;
+	std::cout << RED;
 	std::cout << "An Animal class has been destroyed." << std::endl;
 	std::cout << RESET;
 }
 
 void	Animal::makeSound(void) const
 {
-	std::cout << BG_BLACK;
 	std::cout << "*GENERIC ANIMAL SOUND*" << std::endl;
-	std::cout << RESET;
 }
 
 std::string	Animal::getType(void) const

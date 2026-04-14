@@ -5,7 +5,8 @@
 Dog::Dog(void)
 {
 	this->type = "Dog";
-	std::cout << BG_BLACK;
+	this->brain = new Brain;
+	std::cout << GREEN;
 	std::cout << "Created a dog." << std::endl;
 	std::cout << RESET;
 }
@@ -20,13 +21,17 @@ Dog& Dog::operator=(const Dog& other)
 	if (this != &other)
 	{
 		this->type = other.type;	
+		*this->brain = *other.brain;
 	}
 	return (*this);
 }
 
 Dog::~Dog(void)
 {
+	delete brain;
+	std::cout << RED;
 	std::cout << "Disassembled dog." << std::endl;
+	std::cout << RESET;
 }
 
 void	Dog::makeSound() const

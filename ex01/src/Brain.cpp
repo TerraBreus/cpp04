@@ -4,7 +4,7 @@
 
 Brain::Brain(void)
 {
-	std::cout << BG_BLACK << GREEN;
+	std::cout << GREEN;
 	std::cout << "Creating brain 0_0" << std::endl;
 	std::cout << RESET;
 }
@@ -16,7 +16,7 @@ Brain::Brain(const Brain& other)
 
 Brain& Brain::operator=(const Brain& other)
 {
-	std::cout << "assigmentoperator called" << std::endl;
+	std::cout << "brain assigmentoperator called" << std::endl;
 	if (this != &other)
 	{
 		this->ideas = other.ideas;
@@ -26,7 +26,7 @@ Brain& Brain::operator=(const Brain& other)
 
 Brain::~Brain(void)
 {
-	std::cout << BG_BLACK << RED;
+	std::cout << RED;
 	std::cout << "Stupifying animal (brain destructor)" << std::endl;
 	std::cout << RESET;
 }
