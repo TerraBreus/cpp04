@@ -10,18 +10,26 @@
 
 int	main(void)
 {
-
-	Brain	brain1;
-	Brain	brain2;
-
-	brain1.setIdea("hasd", 0);
-	brain2 = brain1;
-
-	std::cout << brain2.getIdea(0) << std::endl;
 	
+	Animal*	catsAndDogs[100];
+
+	for (int i = 0; i < 100; i++)
+	{
+		if (i < 50)
+			catsAndDogs[i] = new Cat;
+		else
+			catsAndDogs[i] = new Dog;
+	}
+
+	for (int i = 0; i < 100; i++)
+	{
+		std::cout << i << std::endl;
+		delete catsAndDogs[i];
+	}
+
 	Cat	one, two;
 	one.createThought("bones", 0);
-	one = two;
+	two = one;
 	one.createThought("apples", 0);
 	std::cout << "Two thinks: ";
 	two.thinkThought(0);
