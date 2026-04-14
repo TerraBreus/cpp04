@@ -1,6 +1,6 @@
 NAME = howToSetTheWorldOnFire
 COMP = c++
-FLAGS = -Wall -Werror -Wextra -g
+FLAGS = -Wall -Werror -Wextra
 
 SRC := \
 	   main.cpp \
