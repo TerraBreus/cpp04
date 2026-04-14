@@ -16,4 +16,5 @@ class Cat : public Animal
 		void	makeSound(void) const override;
 		void	createThought(std::string str, int i);
 		void	thinkThought(int i);
+		void	printBrainAdress();
 };

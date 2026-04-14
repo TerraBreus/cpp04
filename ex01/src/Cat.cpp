@@ -13,14 +13,19 @@ Cat::Cat(void)
 
 Cat::Cat(const Cat& other)
 {
+	std::cout << "[CAT] Copy Constructor Created" << std::endl;
+	this->brain = nullptr;
 	*this = other;
 }
 
 Cat& Cat::operator=(const Cat& other)
 {
+
 	if (this != &other)
 	{
 		this->type = other.type;	
+		if (!this->brain)
+			this->brain = new Brain;
 		*this->brain = *other.brain;
 	}
 	return (*this);
@@ -47,4 +52,9 @@ void	Cat::createThought(std::string str, int i)
 void	Cat::thinkThought(int i)
 {
 	std::cout << this->brain->getIdea(i) << std::endl;
+}
+
+void	Cat::printBrainAdress()
+{
+	std::cout << this->brain << std::endl;
 }
