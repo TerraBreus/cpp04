@@ -64,6 +64,21 @@ static void	deepCopyExample(void)
 	one.thinkThought(0);
 }
 
+void	secondDeepCopyExample(void)
+{
+	std::cout << "--- Code to be executed ---" << std::endl;
+	std::cout << "Cat\tJames;\nCat\tJoshua(James);" << std::endl;
+	waitForUser("");
+	Cat	James;
+	Cat	Joshua(James);
+
+	waitForUser("--- Printing Brain Adresses ---");
+	std::cout << "Brain Adress of James:\t";
+	James.printBrainAdress();
+	std::cout << "Brain Adress of Joshua:\t";
+	Joshua.printBrainAdress();
+}
+
 int	main(void)
 {
 	Animal*	catsAndDogs[100];
@@ -75,6 +90,7 @@ int	main(void)
 	waitForUser("= = DEEP COPY EXAMPLE = =");
 	deepCopyExample();
 	waitForUser("= = SECOND DEEP COPY EXAMPLE = =");
+	secondDeepCopyExample();
 
 	return (0);
 }
