@@ -3,6 +3,7 @@ COMP = c++
 FLAGS = -Wall -Werror -Wextra
 
 SRC := \
+	   correctPolymorphism.cpp \
 	   utils.cpp \
 	   main.cpp \
 	   Animal.cpp \
@@ -21,10 +22,8 @@ all : $(NAME)
 $(NAME) : $(OBJ)
 	$(COMP) $(FLAGS) $(OBJ) -o $@
 
-makedir :
-	mkdir -p $(OBJDIR)
-
-$(OBJDIR)%.o : $(SRCDIR)%.cpp makedir
+$(OBJDIR)%.o : $(SRCDIR)%.cpp
+	@mkdir -p $(OBJDIR)
 	$(COMP) $(FLAGS) -c $< -o $@
 
 clean :

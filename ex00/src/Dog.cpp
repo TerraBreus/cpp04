@@ -26,10 +26,13 @@ Dog& Dog::operator=(const Dog& other)
 
 Dog::~Dog(void)
 {
+	std::cout << BG_BLACK;
 	std::cout << "Disassembled dog." << std::endl;
+	std::cout << RESET;
 }
 
 void	Dog::makeSound() const
 {
-	std::cout << "b o r k" << std::endl;
+	std::cout << BG_BLACK;
+	std::cout << "b o r k" << RESET << std::endl;
 }

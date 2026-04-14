@@ -14,3 +14,4 @@ void	clearTerminal(void);
 void	loadingScreen(std::string prompt);
 void	printer(std::string prompt, std::string color, int newline);
 void	printer(std::string prompt, int newline);
+void	step();

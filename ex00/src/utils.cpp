@@ -85,3 +85,10 @@ void	printer(std::string prompt, int newline)
 	else
 		std::cout << std::flush;
 }
+
+void	step(void)
+{
+	std::cout << YELLOW;
+	std::cout << "Press ENTER to continue" << RESET << std::endl;
+	askForInput(CIN);
+}
