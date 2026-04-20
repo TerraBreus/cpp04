@@ -2,7 +2,7 @@
 #include "../inc/terminal_colors.h"
 #include "../inc/utils.hpp"
 
-std::string	startUpMessage(void)
+void	startUpMessage(void)
 {
 	std::cout << PURPLE;
 	std::cout << "Welcome to my interactive program teaching you about Polymorphism." << std::endl;
@@ -18,7 +18,4 @@ std::string	startUpMessage(void)
 	std::cout << RED;
 	std::cout << "2. Incorrect use of Polymorphism (WrongAnimal class)." << std::endl;
 	std::cout << RESET;
-
-	std::string	result = askForInput(STR);
-	return (result);
 }
