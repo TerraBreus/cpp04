@@ -5,6 +5,7 @@ FLAGS = -Wall -Werror -Wextra
 SRC := \
 	   startUpMessage.cpp \
 	   correctPolymorphism.cpp \
+	   incorrectPolymorphism.cpp \
 	   utils.cpp \
 	   main.cpp \
 	   Animal.cpp \
