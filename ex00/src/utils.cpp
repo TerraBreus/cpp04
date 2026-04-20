@@ -1,4 +1,5 @@
 #include <string>
+#include "../inc/Animal.hpp"
 #include "../inc/utils.hpp"
 
 void	sleepyPrinter(std::string prompt, std::string color)
@@ -24,7 +25,7 @@ void	sleepyPrinter(std::string prompt)
 	sleep(1);
 }
 
-std::string askForInput(int	cinOrStr)
+std::string askForInput(int	cinOrStr, const Animal* ptr[3])
 {
 	std::string	userInput;
 
@@ -35,6 +36,14 @@ std::string askForInput(int	cinOrStr)
 	if (std::cin.eof())
 	{
 		std::cout << "Exiting program..." << std::endl;
+		if (ptr != nullptr)
+		{
+			for (int i = 0; i < 3; i++)
+			{
+				if (ptr[i] != nullptr)
+					delete ptr[i];
+			}
+		}
 		exit (0);
 	}
 	return (userInput);
@@ -86,9 +95,9 @@ void	printer(std::string prompt, int newline)
 		std::cout << std::flush;
 }
 
-void	step(void)
+void	step(const Animal* ptr[3])
 {
 	std::cout << YELLOW;
 	std::cout << "Press ENTER to continue" << RESET << std::endl;
-	askForInput(CIN);
+	askForInput(CIN, ptr);
 }
