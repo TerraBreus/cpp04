@@ -8,8 +8,9 @@
 #include "../inc/terminal_colors.h"
 #include "../inc/utils.hpp"
 
-void	correctPolymorphism(void)
+void	correctPolymorphism(const Animal* ptr[3])
 {
+	loadingScreen("CORRECT POLYMORPHISM");
 	clearTerminal();
 	sleepyPrinter("In this example, we have dogs and cats, which are both animals.");
 	sleepyPrinter("Cats and Dogs both can make sounds! However they are not the same...");
@@ -18,25 +19,28 @@ void	correctPolymorphism(void)
 	sleepyPrinter("const Animal* \t genericAnimal = new Animal();", PURPLE);
 
 	const Animal *	genericAnimal = new Animal();
+	ptr[0] = genericAnimal;
 
 	printer("This animal has a \"makeSound()\" function! Let's call it.", NEWLINE);
-	step();
+	step(ptr);
 	sleepyPrinter("genericAnimal->makeSound();", PURPLE);
 
 	genericAnimal->makeSound();
 
-	step();
+	step(ptr);
 	sleepyPrinter("Since we no longer need our animal, let's delete it");
 	printer("delete\tgenericAnimal;", PURPLE, NEWLINE);
 	
 	delete genericAnimal;
+	ptr[0] = nullptr;
 
-	step();
+	step(ptr);
 
 	clearTerminal();
 	printer("Great! Now let me introduce you to jake!", NEWLINE);
 	sleepyPrinter("const Animal*\tjake = new Dog();", PURPLE);
 	const Animal*	jake = new Dog();
+	ptr[0] = jake;
 
 	sleepyPrinter("");
 	printer("Jake is of type ", NO_NEWLINE);
@@ -44,33 +48,36 @@ void	correctPolymorphism(void)
 	printer(", which is also a type of ", NO_NEWLINE);
 	printer("animal", BOLD_PURPLE, NEWLINE);
 	printer("This is why you see both the constructor messages from the Animal and the Dog class.", NEWLINE);
-	step();
+	step(ptr);
 	printer("Now let's see what sound jake makes!", NEWLINE);
 	sleepyPrinter("jake->makeSound()", PURPLE);
 	jake->makeSound();
 
-	step();
+	step(ptr);
 	sleepyPrinter("delete\tjake;", PURPLE);
 	delete	jake;
+	ptr[0] = nullptr;
 
-	step();
+	step(ptr);
 	clearTerminal();
 	printer("Awesome! So eventhough jake has inherited the \"makeSound\" function", NO_NEWLINE);
 	printer(" from the animal class, it's behavior is different!", NEWLINE);
 	sleepyPrinter("Now let's take a different animal!");
 	sleepyPrinter("Animal*\tfiona = new Cat();", PURPLE);
 	Animal*	fiona = new Cat();
+	ptr[0] = fiona;
 
 	sleepyPrinter("fiona->makeSound();", PURPLE);
 	fiona->makeSound();
 
-	step();
+	step(ptr);
 	printer("delete fiona();", PURPLE, NEWLINE);
 	delete	fiona;
+	ptr[0] = nullptr;
 
-	step();
+	step(ptr);
 	printer("The important factor here is to see how, even though fiona and jake are ", NO_NEWLINE);
 	printer("declared as Animal Pointers", BRIGHT_GREEN, NEWLINE);
 	printer("they still have different behavior", NEWLINE);
-	step();
+	step(ptr);
 }
