@@ -67,7 +67,8 @@ static void	deepCopyExample(void)
 void	secondDeepCopyExample(void)
 {
 	std::cout << "--- Code to be executed ---" << std::endl;
-	std::cout << "Cat\tJames;\nCat\tJoshua(James);" << std::endl;
+	std::cout << PURPLE;
+	std::cout << "Cat\tJames;\nCat\tJoshua(James);" << RESET << std::endl;
 	waitForUser("");
 	Cat	James;
 	Cat	Joshua(James);
