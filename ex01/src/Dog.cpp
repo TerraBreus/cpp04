@@ -48,3 +48,8 @@ void	Dog::thinkThought(int i)
 {
 	std::cout << this->brain->getIdea(i) << std::endl;
 }
+
+void	Dog::printBrainAdress()
+{
+	std::cout << this->brain << std::endl;
+}
