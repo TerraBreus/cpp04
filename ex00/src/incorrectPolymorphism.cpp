@@ -30,4 +30,15 @@ void	incorrectPolymorphism(void)
 	sleepyPrinter("We did not use polymorphism correctly and still get default behavior...");
 	sleepyPrinter("So don't forget to use the \"virtual\" keyword");
 	step(nullptr);
+
+	sleepyPrinter("However, there is still a way we can have the wrongCat make its intended sound.");
+	printer("For that we must declare the variable as a ", NO_NEWLINE);
+	printer("pointer to a WrongCat class", BRIGHT_RED, NEWLINE);
+	sleepyPrinter("const WrongCat*\tCake = new WrongCat();", PURPLE);
+	const WrongCat*	Cake = new WrongCat();
+	sleepyPrinter("Cake->makeSound()", PURPLE);
+	Cake->makeSound();
+	sleepyPrinter("delete Cake", PURPLE);
+	delete	Cake;
+	step(nullptr);
 }
