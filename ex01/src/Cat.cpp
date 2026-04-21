@@ -13,7 +13,9 @@ Cat::Cat(void)
 
 Cat::Cat(const Cat& other)
 {
+	std::cout << GREEN;
 	std::cout << "[CAT] Copy Constructor Created" << std::endl;
+	std::cout << RESET;
 	this->brain = nullptr;
 	*this = other;
 }
