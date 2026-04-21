@@ -80,6 +80,20 @@ void	secondDeepCopyExample(void)
 	Joshua.printBrainAdress();
 }
 
+void	thirdDeepCopyExample(void)
+{
+	Dog	basic;
+	Dog	tmp = basic;
+
+	std::cout << "--- Code to be executed ---" << std::endl;
+	std::cout << PURPLE;
+	std::cout << "Dog\tbasic;\nDog\ttmp = basic;" << RESET << std::endl;
+	std::cout << "Brain Adress of tmp: ";
+	tmp.printBrainAdress();
+	std::cout << "Brain Adress of basic: ";
+	basic.printBrainAdress();
+}
+
 int	main(void)
 {
 	Animal*	catsAndDogs[100];
@@ -92,6 +106,7 @@ int	main(void)
 	deepCopyExample();
 	waitForUser("= = SECOND DEEP COPY EXAMPLE = =");
 	secondDeepCopyExample();
-
+	waitForUser("= = THIRD DEEP COPY EXAMPLE = =");
+	thirdDeepCopyExample();
 	return (0);
 }
