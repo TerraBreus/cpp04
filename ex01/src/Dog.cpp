@@ -13,6 +13,10 @@ Dog::Dog(void)
 
 Dog::Dog(const Dog& other)
 {
+	std::cout << GREEN;
+	std::cout << "[DOG] Copy Constructor Called" << std::endl;
+	std::cout << RESET;
+	this->brain = nullptr;
 	*this = other;
 }
 
@@ -21,6 +25,8 @@ Dog& Dog::operator=(const Dog& other)
 	if (this != &other)
 	{
 		this->type = other.type;	
+		if (!this->brain)
+			this->brain = new Brain;
 		*this->brain = *other.brain;
 	}
 	return (*this);
